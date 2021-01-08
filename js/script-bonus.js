@@ -13,7 +13,6 @@ var miomax;
 while (choice!=='easy' && choice!=='medium' && choice!=='hard')
 {choice=prompt('Scegli livello easy,medium o hard');}
 
-
 function selectlevel(x){
 switch (x)
 {case 'hard':
@@ -75,9 +74,14 @@ var giocata;
 while (giocateVinte.length<84 && !is_mine(giocata)) {
 giocata=parseInt(prompt('inserisci un numero tra 1 e '+miomax));
 if (is_valid(giocata) && !giocateVinte.includes(giocata) && !is_mine(giocata)){
-giocateVinte.push(giocata);}
+giocateVinte.push(giocata);
+}
 
-if(giocateVinte.length==84){alert('Complimenti hai vinto');}
-else if(is_mine(giocata)){alert('Hai preso una mina.Le tue giocate vinte complessive sono state '+giocateVinte.length+' su '+(miomax-16))};
+if(giocateVinte.length==84){
+  alert('Complimenti hai vinto');
+}
+else if(is_mine(giocata)){
+  alert('Hai preso una mina.Le tue giocate vinte complessive sono state '+giocateVinte.length+' su '+(miomax-16))
+}
 }
 console.log(giocateVinte);
