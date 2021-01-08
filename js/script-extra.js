@@ -8,6 +8,7 @@
 
 // BONUS:All'inizio il software richiede anche una difficoltà all'utente che cambia il range di numeri casuali.Con difficoltà 0=>tra 1 e 100,con difficoltà 1=>tra 1 e 80, con difficoltà 2=>tra 1 e 50;
 
+
 var choice;
 while (choice!=='easy' && choice!=='medium' && choice!=='hard')
 {choice=prompt('Scegli livello easy,medium o hard');}
@@ -41,6 +42,22 @@ mine.push(random);
 }
 return mine;
 }
+var mine= mine_generator(16,1,miomax);
+console.log(mine);
+
+var griglia= document.getElementById('griglia');
+for (var x = 0; x < miomax; x++) {
+    if (!mine.includes(x))
+   {griglia.innerHTML+='<div id="quadrato" class="buono">quadrato buono'+x+'</div>';
+
+   }
+   else{
+        griglia.innerHTML+='<div id="quadrato" class="malevolo">quadrato malevolo'+x+'</div>';
+   }
+
+}
+
+var quadrato= document.getElementById('quadrato');
 
 // funzione per vedere se è una mina
 
@@ -63,14 +80,12 @@ else {
   return false;
 }
 }
-
-var mine= mine_generator(16,1,miomax);
-console.log(mine);
-var i=0;
+for (var i = 0; i < miomax; i++) {
+quadrato[i].addEventListener('click',function(){
 var giocateVinte=[];
 var giocata;
 while (giocateVinte.length<84 && !is_mine(giocata)) {
-giocata=parseInt(prompt('inserisci un numero tra 1 e '+miomax));
+giocata=this.quadrato;
 if (is_valid(giocata) && !giocateVinte.includes(giocata)){
 giocateVinte.push(giocata);}
 }
@@ -81,12 +96,5 @@ if(giocateVinte.length==84){alert('Complimenti hai vinto');}
 }
 if(is_mine(giocata)){alert('Hai preso una mina.Le tue giocate vinte complessive sono state '+ (giocateVinte.length-1)+' su '+(miomax-16))};
 
-
-
-var griglia= document.getElementById('griglia');
-for (var x = 0; x < 100; x++) {
-   griglia.innerHTML+='<div class="quadrato">'+x+'</div>';
-    }
-for (var y = 0; y < mine.length; y++) {
-
+})
 }

@@ -5,10 +5,9 @@ box-sizing: border-box;
 margin: 0;
 }
 
-.quadrato{
-  width:40px;
-  height:40px;
-  background-color: red;
+#quadrato{
+  width:80px;
+  height:80px;
   border:1px solid black;
 }
 
@@ -18,5 +17,13 @@ margin: 0;
 
 #griglia{
   flex-wrap:wrap;
- width:400px;
+ width:800px;
+}
+
+.malevolo{
+  background-color:red;
+}
+
+.buono{
+  background-color: green;
 }
