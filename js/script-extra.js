@@ -85,5 +85,8 @@ if(is_mine(giocata)){alert('Hai preso una mina.Le tue giocate vinte complessive 
 
 var griglia= document.getElementById('griglia');
 for (var x = 0; x < 100; x++) {
-   griglia.innerHTML+='<div class="quadrato"></div>';
+   griglia.innerHTML+='<div class="quadrato">'+x+'</div>';
     }
+for (var y = 0; y < mine.length; y++) {
+
+}

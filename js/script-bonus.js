@@ -23,6 +23,8 @@ return miomax=80;
 break;
 case 'easy':
 return miomax=100;
+default:
+return miomax=100;
 }
 
 }
