@@ -8,8 +8,9 @@
 
 // BONUS:All'inizio il software richiede anche una difficoltà all'utente che cambia il range di numeri casuali.Con difficoltà 0=>tra 1 e 100,con difficoltà 1=>tra 1 e 80, con difficoltà 2=>tra 1 e 50;
 
-
-var choice=prompt('Scegli livello easy,medium o hard')
+var choice;
+while (choice!=='easy' && choice!=='medium' && choice!=='hard')
+{choice=prompt('Scegli livello easy,medium o hard');}
 
 
 function selectlevel(x){
