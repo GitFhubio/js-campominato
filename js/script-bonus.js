@@ -56,7 +56,7 @@ function is_mine(x)
 // funzione per vedere se il numero è valido
 
 function is_valid (x){
-if (!isNaN(x) && x>=1 && x<=miomax)
+if (!isNaN(x) &&  x>=1 && x<=miomax)
 {return true;}
 else {
   return false;
