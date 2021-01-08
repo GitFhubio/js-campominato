@@ -80,3 +80,10 @@ if(giocateVinte.length==84){alert('Complimenti hai vinto');}
   alert('Devi inserire valori tra 1 e '+miomax);
 }
 if(is_mine(giocata)){alert('Hai preso una mina.Le tue giocate vinte complessive sono state '+ (giocateVinte.length-1)+' su '+(miomax-16))};
+
+
+
+var griglia= document.getElementById('griglia');
+for (var x = 0; x < 100; x++) {
+   griglia.innerHTML+='<div class="quadrato"></div>';
+    }
