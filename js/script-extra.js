@@ -50,53 +50,32 @@ console.log(mine);
 var griglia= document.getElementById('griglia');
 for (var x = 0; x < miomax; x++) {
     if (!mine.includes(x))
-   {griglia.innerHTML+='<div id="quadrato" class="buono">quadrato buono'+x+'</div>';
+   {griglia.innerHTML+='<div class="quadrato">buono</div>';
 
    }
    else{
-        griglia.innerHTML+='<div id="quadrato" class="malevolo">quadrato malevolo'+x+'</div>';
+        griglia.innerHTML+='<div class="quadrato">malevolo</div>';
    }
 
 }
 
-var quadrato= document.getElementById('quadrato');
-
+var quadrati= document.getElementsByClassName('quadrato');
 // funzione per vedere se è una mina
 
-function is_mine(x)
-{
-  if(mine.includes(x)){
-    return true;
-  }else{
-    return false;
-  }
-}
-
-
 // funzione per vedere se il numero è valido
+for (var i = 0; i < quadrati.length; i++) {
+quadrati[i].addEventListener('click',function(event){
+  var giocateVinte=[];
 
-function is_valid (x){
-if (!isNaN(x) &&  x>=1 && x<=miomax)
-{return true;}
-else {
-  return false;
-}
-}
-for (var i = 0; i < miomax; i++) {
-quadrato[i].addEventListener('click',function(){
-var giocateVinte=[];
-var giocata;
-while (giocateVinte.length<84 && !is_mine(giocata)) {
-giocata=this.quadrato;
-if (is_valid(giocata) && !giocateVinte.includes(giocata)){
+var giocata=event.target.innerHTML;
+console.log(giocata);
+while (giocateVinte.length<84 && giocata!='malevolo') {
+if (giocata=='buono'){
 giocateVinte.push(giocata);}
 }
 
-if(giocateVinte.length==84){alert('Complimenti hai vinto');}
- else if(!is_valid(giocata)){
-  alert('Devi inserire valori tra 1 e '+miomax);
-}
-if(is_mine(giocata)){alert('Hai preso una mina.Le tue giocate vinte complessive sono state '+ (giocateVinte.length-1)+' su '+(miomax-16))};
+if(giocateVinte.length==84){alert('Complimenti hai evitato mine');}
+ else if(giocata=='malevolo'){alert('Hai preso una mina.Le tue giocate vinte complessive sono state '+giocateVinte.length+' su '+(miomax-16))};
 
 })
 }
