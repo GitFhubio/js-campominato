@@ -1,0 +1,22 @@
+*{
+
+padding: 0;
+box-sizing: border-box;
+margin: 0;
+}
+
+.quadrato{
+  width:40px;
+  height:40px;
+  background-color: red;
+  border:1px solid black;
+}
+
+.flex{
+  display:flex;
+}
+
+#griglia{
+  flex-wrap:wrap;
+ width:400px;
+}
