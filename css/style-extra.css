@@ -6,8 +6,8 @@ margin: 0;
 }
 
 .quadrato{
-  width:80px;
-  height:80px;
+  width:40px;
+  height:40px;
   border:1px solid black;
   color:white;
   transition-duration: 1s;
@@ -19,7 +19,7 @@ margin: 0;
 
 #griglia{
   flex-wrap:wrap;
- width:800px;
+ width:400px;
 }
 .rosso{
   background-color: red;

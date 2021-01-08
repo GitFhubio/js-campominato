@@ -54,7 +54,7 @@ for (var x = 0; x < miomax; x++) {
 
    }
    else{
-        griglia.innerHTML+='<div class="quadrato">malevolo</div>';
+        griglia.innerHTML+='<div class="quadrato">minaa</div>';
    }
 
 }
@@ -72,9 +72,9 @@ var giocata=event.target.innerHTML;
 if (giocata=='buono'){alert('Bravo,hai evitato mine');
 event.target.className='verde';
 }
- else if(giocata=='malevolo'){alert('Hai preso una mina');
+ else if(giocata=='minaa'){alert('Hai preso una mina: hai perso');
  event.target.className='rosso';
- setTimeout(function(){ window.location.reload(false); }, 3000); ; 
+ setTimeout(function(){ window.location.reload(false); }, 3000); ;
 }
 
 
