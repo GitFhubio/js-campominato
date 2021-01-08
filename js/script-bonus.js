@@ -65,8 +65,6 @@ else {
 
 var mine= mine_generator(16,1,miomax);
 console.log(mine);
-
-console.log(mine);
 var i=0;
 var giocateVinte=[];
 var giocata;
