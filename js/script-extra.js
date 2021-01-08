@@ -68,14 +68,18 @@ quadrati[i].addEventListener('click',function(event){
   var giocateVinte=[];
 
 var giocata=event.target.innerHTML;
-console.log(giocata);
-while (giocateVinte.length<84 && giocata!='malevolo') {
-if (giocata=='buono'){
-giocateVinte.push(giocata);}
+
+if (giocata=='buono'){alert('Bravo,hai evitato mine');
+event.target.className='verde';
+}
+ else if(giocata=='malevolo'){alert('Hai preso una mina');
+ event.target.className='rosso';
+ setTimeout(function(){ window.location.reload(false); }, 3000); ; 
 }
 
-if(giocateVinte.length==84){alert('Complimenti hai evitato mine');}
- else if(giocata=='malevolo'){alert('Hai preso una mina.Le tue giocate vinte complessive sono state '+giocateVinte.length+' su '+(miomax-16))};
+
+
+
 
 })
 }

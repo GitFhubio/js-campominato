@@ -10,6 +10,7 @@ margin: 0;
   height:80px;
   border:1px solid black;
   color:white;
+  transition-duration: 1s;
 }
 
 .flex{
@@ -19,4 +20,10 @@ margin: 0;
 #griglia{
   flex-wrap:wrap;
  width:800px;
+}
+.rosso{
+  background-color: red;
+}
+.verde{
+  background-color: green;
 }
