@@ -50,11 +50,11 @@ console.log(mine);
 var griglia= document.getElementById('griglia');
 for (var x = 0; x < miomax; x++) {
     if (!mine.includes(x))
-   {griglia.innerHTML+='<div class="quadrato buono"></div>';
+   {griglia.innerHTML+='<div class="quadrato buono">'+x+'</div>';
 
    }
    else{
-        griglia.innerHTML+='<div class="quadrato malevolo"></div>';
+        griglia.innerHTML+='<div class="quadrato malevolo">'+x+'</div>';
    }
 
 }
@@ -62,9 +62,7 @@ for (var x = 0; x < miomax; x++) {
 var quadrati= document.getElementsByClassName('quadrato');
 
 console.log(quadrati);
-// funzione per vedere se è una mina
 
-// funzione per vedere se il numero è valido
 for (var i = 0; i < quadrati.length; i++) {
 quadrati[i].addEventListener('click',function(){
 { var giocateVinte=[];
