@@ -42,6 +42,7 @@ else {
 var mine= mine_generator(16,1,100);
 
 console.log(mine);
+
 var i=0;
 var giocateVinte=[];
 var giocata;
@@ -55,6 +56,6 @@ if(giocateVinte.length==84){alert('Complimenti hai vinto');}
  else if(!is_valid(giocata)){
   alert('Devi inserire valori tra 1 e 100');
 }
-if(is_mine(giocata)){alert('Hai preso una mina')};
+if(is_mine(giocata)){alert('Hai preso una mina.Le tue giocate vinte complessive sono state '+ (giocateVinte.length-1)+' su 84')};
 
 console.log(giocateVinte);

@@ -79,6 +79,6 @@ if(giocateVinte.length==84){alert('Complimenti hai vinto');}
  else if(!is_valid(giocata)){
   alert('Devi inserire valori tra 1 e '+miomax);
 }
-if(is_mine(giocata)){alert('Hai preso una mina')};
+if(is_mine(giocata)){alert('Hai preso una mina.Le tue giocate vinte complessive sono state '+ (giocateVinte.length-1)+' su '+(miomax-16))};
 
 console.log(giocateVinte);
