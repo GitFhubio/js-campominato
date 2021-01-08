@@ -50,6 +50,7 @@ giocata=parseInt(prompt('inserisci un numero tra 1 e 100'));
 if (is_valid(giocata) && !giocateVinte.includes(giocata)){
 giocateVinte.push(giocata);}
 }
+
 if(giocateVinte.length==84){alert('Complimenti hai vinto');}
  else if(!is_valid(giocata)){
   alert('Devi inserire valori tra 1 e 100');
