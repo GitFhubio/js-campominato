@@ -9,6 +9,7 @@
 // BONUS:All'inizio il software richiede anche una difficoltà all'utente che cambia il range di numeri casuali.Con difficoltà 0=>tra 1 e 100,con difficoltà 1=>tra 1 e 80, con difficoltà 2=>tra 1 e 50;
 
 var choice;
+var miomax;
 while (choice!=='easy' && choice!=='medium' && choice!=='hard')
 {choice=prompt('Scegli livello easy,medium o hard');}
 
@@ -16,20 +17,20 @@ while (choice!=='easy' && choice!=='medium' && choice!=='hard')
 function selectlevel(x){
 switch (x)
 {case 'hard':
-return miomax=50;
+return 50;
 break;
 case 'medium':
-return miomax=80;
+return 80;
 break;
 case 'easy':
-return miomax=100;
+return 100;
 default:
-return miomax=100;
+return 100;
 }
 
 }
 
-selectlevel(choice);
+miomax=selectlevel(choice);
 
 // funzione per generare mine
 function mine_generator(n,min,max){
@@ -73,11 +74,10 @@ var giocateVinte=[];
 var giocata;
 while (giocateVinte.length<84 && !is_mine(giocata)) {
 giocata=parseInt(prompt('inserisci un numero tra 1 e '+miomax));
-if (is_valid(giocata) && !giocateVinte.includes(giocata)){
+if (is_valid(giocata) && !giocateVinte.includes(giocata) && !is_mine(giocata)){
 giocateVinte.push(giocata);}
-}
 
 if(giocateVinte.length==84){alert('Complimenti hai vinto');}
-else if(is_mine(giocata)){alert('Hai preso una mina.Le tue giocate vinte complessive sono state '+ (giocateVinte.length-1)+' su '+(miomax-16))};
-
+else if(is_mine(giocata)){alert('Hai preso una mina.Le tue giocate vinte complessive sono state '+giocateVinte.length+' su '+(miomax-16))};
+}
 console.log(giocateVinte);

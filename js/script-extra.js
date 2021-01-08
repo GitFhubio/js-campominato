@@ -8,8 +8,8 @@
 
 // BONUS:All'inizio il software richiede anche una difficoltà all'utente che cambia il range di numeri casuali.Con difficoltà 0=>tra 1 e 100,con difficoltà 1=>tra 1 e 80, con difficoltà 2=>tra 1 e 50;
 
-
 var choice;
+var miomax;
 while (choice!=='easy' && choice!=='medium' && choice!=='hard')
 {choice=prompt('Scegli livello easy,medium o hard');}
 
@@ -17,18 +17,20 @@ while (choice!=='easy' && choice!=='medium' && choice!=='hard')
 function selectlevel(x){
 switch (x)
 {case 'hard':
-return miomax=50;
+return 50;
 break;
 case 'medium':
-return miomax=80;
+return 80;
 break;
 case 'easy':
-return miomax=100;
+return 100;
+default:
+return 100;
 }
 
 }
 
-selectlevel(choice);
+miomax=selectlevel(choice);
 
 // funzione per generare mine
 function mine_generator(n,min,max){
