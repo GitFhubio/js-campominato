@@ -50,36 +50,39 @@ console.log(mine);
 var griglia= document.getElementById('griglia');
 for (var x = 0; x < miomax; x++) {
     if (!mine.includes(x))
-   {griglia.innerHTML+='<div class="quadrato">buono</div>';
+   {griglia.innerHTML+='<div class="quadrato buono"></div>';
 
    }
    else{
-        griglia.innerHTML+='<div class="quadrato">minaa</div>';
+        griglia.innerHTML+='<div class="quadrato malevolo"></div>';
    }
 
 }
 
 var quadrati= document.getElementsByClassName('quadrato');
+
+console.log(quadrati);
 // funzione per vedere se è una mina
 
 // funzione per vedere se il numero è valido
 for (var i = 0; i < quadrati.length; i++) {
-quadrati[i].addEventListener('click',function(event){
-  var giocateVinte=[];
+quadrati[i].addEventListener('click',function(){
+{ var giocateVinte=[];
 
-var giocata=event.target.innerHTML;
+var giocata=this.className;
+console.log(giocata);
 
-if (giocata=='buono'){alert('Bravo,hai evitato mine');
-event.target.className='verde';
+if (giocata.includes('buono')){alert('Bravo,hai evitato mine');
+this.classList.add('verde');
 }
- else if(giocata=='minaa'){alert('Hai preso una mina: hai perso');
- event.target.className='rosso';
+ else if(giocata.includes('malevolo')){alert('Hai preso una mina: hai perso');
+this.classList.add('rosso');
  setTimeout(function(){ window.location.reload(false); }, 3000); ;
 }
 
 
 
-
+}
 
 })
 }
