@@ -68,12 +68,12 @@ console.log(giocateVinte);
 // nota2b-la funzione per ordinare array in modo numerico crescente sarebbe meglio farsela da soli per sviluppare un po' di logica:
 
 // function bubbleSort(array) {
-//   var done = false;
-//   while (!done) {
-//     done = true;
+//   var bool = false;
+//   while (!bool) {
+//     bool = true;
 //     for (var i = 1; i < array.length; i++) {
 //       if (array[i - 1] > array[i]) {
-//         done = false;
+//         bool = false;
 //         var tmp = array[i - 1];
 //         array[i - 1] = array[i];
 //         array[i] = tmp;
@@ -85,6 +85,6 @@ console.log(giocateVinte);
 // }
 //
 // da notare la variabile provvisoria per lo scambio di valore
- 
+
 // nota3:il ciclo è strutturato al solito perché non se ne esca all'errore di inserimento da input,
 // se il numero inserito non è valido semplicemente non viene conteggiato come giocata vinta e si continua.
