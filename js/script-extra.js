@@ -155,7 +155,8 @@ audiofail.play();
 var estremo= miomax-1;
 var ind = estremo.toString().charAt(0);
 for (var c = 11;c< quadrati.length; c++)
-{if((c+'').indexOf('0') == -1 && (c+'').indexOf('9') == -1 && (c+'').indexOf('ind') !== 0){
+{if((c+'').indexOf('0') == -1 && (c+'').indexOf('9') == -1 && (c+'').indexOf(ind) !== 0){
+
 quadrati[c].addEventListener('click',function(){
 
 var giocata=this.className;
@@ -170,7 +171,6 @@ PostAdiacenti(this)[i].classList.add('verde');
 });
 }
 }
-
 
 // Nota:mi sono divertito molto.
 // Dedicato a SS.
