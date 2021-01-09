@@ -94,6 +94,7 @@ audiosuccess.play();
 if (isMinaVicina(this)){
   this.append('\nBC!')
 }
+}
  else if(giocata.includes('malevolo')){alert('Hai preso una mina: hai perso');
 this.classList.add('rosso');
 var audiofail = new Audio('css/exp.mp3');
@@ -101,7 +102,6 @@ audiofail.play();
  setTimeout(function(){ window.location.reload(false); }, 3000);
 }
 
-}
 
 })
 }
