@@ -45,8 +45,42 @@ mine.includes(parseInt(x.innerHTML)-11)
 }else{return false;}
 }
 
+function PreAdiacenti(x)
+{
+  var array=[];
+for (var i = 0; i < parseInt(x.innerHTML); i++) {
+  if(parseInt(quadrati[i].innerHTML)==parseInt(x.innerHTML)-10||
+parseInt(quadrati[i].innerHTML)==parseInt(x.innerHTML)-9||
+parseInt(quadrati[i].innerHTML)==parseInt(x.innerHTML)-11)
+  {
+  array.push(quadrati[i]);
+  }
+
+}
+array.push(x.previousSibling);
+return array;
+}
+function PostAdiacenti(x)
+{
+  var array2=[];
+
+for (var v = quadrati.length-1; v > parseInt(x.innerHTML); v--) {
+  if(parseInt(quadrati[v].innerHTML)==parseInt(x.innerHTML)+10||
+parseInt(quadrati[v].innerHTML)==parseInt(x.innerHTML)+9||
+parseInt(quadrati[v].innerHTML)==parseInt(x.innerHTML)+11)
+  {
+  array2.push(quadrati[v]);
+  }
+
+}
+array2.push(x.nextSibling);
+
+return array2;
+}
+
 
 // funzione per generare mine
+
 function mine_generator(n,min,max){
 var mine=[];
 var random;
@@ -83,8 +117,8 @@ var giocateVinte=[];
 
 var giocata=this.className;
 console.log(giocata);
-
-
+console.log(PreAdiacenti(this));
+console.log(PostAdiacenti(this));
 if (giocata.includes('buono')){
 alert('Bravo,hai evitato mine');
 this.classList.add('verde');
@@ -93,7 +127,15 @@ audiosuccess.play();
 // console.log(this.nextSibling.innerHTML);
  if (isMinaVicina(this)){
   this.append('\nBC!')
- }
+}
+// else{
+// for (var i = 0; i < PreAdiacenti(this).length; i++) {
+// PreAdiacenti(this)[i].classList.add('verde');
+// }
+// for (var i = 0; i < PostAdiacenti(this).length; i++) {
+// PostAdiacenti(this)[i].classList.add('verde');
+// }
+// }
 }
  else if(giocata.includes('malevolo')){
 alert('Hai preso una mina: hai perso');
@@ -103,6 +145,26 @@ audiofail.play();
  setTimeout(function(){ window.location.reload(false); }, 3000);
 }
 
-
 })
+}
+
+// prendo solo il quadrato interno senza la cornica esterna per
+// "allargare la zona sicura" quando non ci sono mine nei paraggi
+// Parto da 8 cosi levo la prima riga superiore interna,
+// il resto della cornice la escludo con condizione sulle cifre 0 e 9
+// che non devono essere contenute nel numero
+for (var c = 8;c< quadrati.length; c++)
+{if((c+'').indexOf('0') == -1 && (c+'').indexOf('9') == -1){
+quadrati[c].addEventListener('click',function(){
+var giocata=this.className;
+if (!isMinaVicina(this) && !giocata.includes('malevolo')){
+for (var i = 0; i < PreAdiacenti(this).length; i++) {
+PreAdiacenti(this)[i].classList.add('verde');
+}
+for (var i = 0; i < PostAdiacenti(this).length; i++) {
+PostAdiacenti(this)[i].classList.add('verde');
+}
+}
+});
+}
 }
