@@ -143,7 +143,7 @@ audiofail.play();
 
 // prendo solo il quadrato interno senza la cornice esterna per
 // "allargare la zona sicura" quando non ci sono mine nei paraggi
-// Parto da 8 cosi levo la prima riga superiore interna,
+// Parto da 11 cosi levo la prima riga superiore interna,
 // il resto della cornice la escludo con condizione sulle cifre 0 e 9
 // che non devono essere contenute nel numero
 
