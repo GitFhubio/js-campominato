@@ -174,3 +174,4 @@ PostAdiacenti(this)[i].classList.add('verde');
 
 // Nota1:mi sono divertito molto.Dedicato a SS.
 // Nota2:Non ho inserito la condizione vittoria finale
+// Nota3: (c+'') è un trucco per considerare il numero una stringa,alternativa a toString
