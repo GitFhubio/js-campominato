@@ -1,5 +1,6 @@
 // Gioco campo minato con griglia html/css
-// (se i quadrati vicini sono sicuri si rivelano benevoli)
+// se i quadrati vicini a quello cliccato sono sicuri si rivelano
+// se nei paraggi c'è una mina esce il segnale bc! (be careful!)
 
 var choice;
 var miomax;
