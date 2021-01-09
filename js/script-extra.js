@@ -72,9 +72,13 @@ console.log(giocata);
 
 if (giocata.includes('buono')){alert('Bravo,hai evitato mine');
 this.classList.add('verde');
+var audiosuccess = new Audio('css/success.mp3');
+audiosuccess.play();
 }
  else if(giocata.includes('malevolo')){alert('Hai preso una mina: hai perso');
 this.classList.add('rosso');
+var audiofail = new Audio('css/exp.mp3');
+audiofail.play();
  setTimeout(function(){ window.location.reload(false); }, 3000); ;
 }
 
