@@ -1,12 +1,5 @@
-// Il computer deve generare 16 numeri casuali tra 1 e 100, che saranno le "mine".
-// In seguito deve chiedere all'utente di inserire un numero alla volta, sempre compreso tra 1 e 100.
-// Se il numero è presente nella lista delle mine, la partita termina, altrimenti il gioco continua chiedendo all'utente un altro numero (continua a giocare).
-// La partita termina quando il giocatore becca una mina, ossia inserisce un numero "vietato" o raggiunge il numero massimo possibile di numeri consentiti, ossia ha inserito tutti i numeri possibili che non sono mine!
-// Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l'utente ha inserito un numero consentito
-
-
-
-// BONUS:All'inizio il software richiede anche una difficoltà all'utente che cambia il range di numeri casuali.Con difficoltà 0=>tra 1 e 100,con difficoltà 1=>tra 1 e 80, con difficoltà 2=>tra 1 e 50;
+// Gioco campo minato con griglia html/css
+// (se i quadrati vicini sono sicuri si rivelano benevoli)
 
 var choice;
 var miomax;
@@ -148,7 +141,7 @@ audiofail.play();
 })
 }
 
-// prendo solo il quadrato interno senza la cornica esterna per
+// prendo solo il quadrato interno senza la cornice esterna per
 // "allargare la zona sicura" quando non ci sono mine nei paraggi
 // Parto da 8 cosi levo la prima riga superiore interna,
 // il resto della cornice la escludo con condizione sulle cifre 0 e 9
@@ -168,3 +161,6 @@ PostAdiacenti(this)[i].classList.add('verde');
 });
 }
 }
+
+// Nota:mi sono divertito molto.
+// Dedicato a SS.
