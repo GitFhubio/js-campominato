@@ -65,5 +65,26 @@ console.log(giocateVinte);
 // nota1: teoricamente per la generazione mine andava bene anche un ciclo
 // for del tipo for (var i = 0;mine.length<16; i++) ma è una forzatura
 // nota2:esiste la funzione per ordinare array arrayName.sort(function(a, b){return a-b}); che però in questo esercizio non serve,almeno per come l'ho pensato io
+// nota2b-la funzione per ordinare array in modo numerico crescente sarebbe meglio farsela da soli per sviluppare un po' di logica:
+
+// function bubbleSort(array) {
+//   var done = false;
+//   while (!done) {
+//     done = true;
+//     for (var i = 1; i < array.length; i++) {
+//       if (array[i - 1] > array[i]) {
+//         done = false;
+//         var tmp = array[i - 1];
+//         array[i - 1] = array[i];
+//         array[i] = tmp;
+//       }
+//     }
+//   }
+//
+//   return array;
+// }
+//
+// da notare la variabile provvisoria per lo scambio di valore
+ 
 // nota3:il ciclo è strutturato al solito perché non se ne esca all'errore di inserimento da input,
 // se il numero inserito non è valido semplicemente non viene conteggiato come giocata vinta e si continua.
