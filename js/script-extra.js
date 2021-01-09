@@ -32,6 +32,20 @@ return 100;
 
 miomax=selectlevel(choice);
 
+function isMinaVicina(x){
+if(mine.includes(parseInt(x.nextSibling.innerHTML)) || mine.includes(parseInt(x.previousSibling.innerHTML)) ||
+mine.includes(parseInt(x.innerHTML)+10)||
+mine.includes(parseInt(x.innerHTML)-10)||
+mine.includes(parseInt(x.innerHTML)+9)||
+mine.includes(parseInt(x.innerHTML)-9)||
+mine.includes(parseInt(x.innerHTML)+11)||
+mine.includes(parseInt(x.innerHTML)-11)
+)
+{return true;
+}else{return false;}
+}
+
+
 // funzione per generare mine
 function mine_generator(n,min,max){
 var mine=[];
@@ -65,24 +79,27 @@ console.log(quadrati);
 
 for (var i = 0; i < quadrati.length; i++) {
 quadrati[i].addEventListener('click',function(){
-{ var giocateVinte=[];
+var giocateVinte=[];
 
 var giocata=this.className;
 console.log(giocata);
 
-if (giocata.includes('buono')){alert('Bravo,hai evitato mine');
+
+if (giocata.includes('buono')){
+alert('Bravo,hai evitato mine');
 this.classList.add('verde');
 var audiosuccess = new Audio('css/success.mp3');
 audiosuccess.play();
+// console.log(this.nextSibling.innerHTML);
+if (isMinaVicina(this)){
+  this.append('\nBC!')
 }
  else if(giocata.includes('malevolo')){alert('Hai preso una mina: hai perso');
 this.classList.add('rosso');
 var audiofail = new Audio('css/exp.mp3');
 audiofail.play();
- setTimeout(function(){ window.location.reload(false); }, 3000); ;
+ setTimeout(function(){ window.location.reload(false); }, 3000);
 }
-
-
 
 }
 
