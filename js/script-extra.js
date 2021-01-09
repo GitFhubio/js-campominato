@@ -146,9 +146,18 @@ audiofail.play();
 // Parto da 8 cosi levo la prima riga superiore interna,
 // il resto della cornice la escludo con condizione sulle cifre 0 e 9
 // che non devono essere contenute nel numero
-for (var c = 8;c< quadrati.length; c++)
-{if((c+'').indexOf('0') == -1 && (c+'').indexOf('9') == -1){
+
+// Per i livelli medium e hard il mio max non è più 100,
+// l'ultima riga non è da 90 a 99 ma da 40 a 49 o 70 a 79 per
+// cui devo inserire ulteriore condizione(ricavandomi l'ind)
+
+
+var estremo= miomax-1;
+var ind = estremo.toString().charAt(0);
+for (var c = 11;c< quadrati.length; c++)
+{if((c+'').indexOf('0') == -1 && (c+'').indexOf('9') == -1 && (c+'').indexOf('ind') !== 0){
 quadrati[c].addEventListener('click',function(){
+
 var giocata=this.className;
 if (!isMinaVicina(this) && !giocata.includes('malevolo')){
 for (var i = 0; i < PreAdiacenti(this).length; i++) {
@@ -161,6 +170,7 @@ PostAdiacenti(this)[i].classList.add('verde');
 });
 }
 }
+
 
 // Nota:mi sono divertito molto.
 // Dedicato a SS.
