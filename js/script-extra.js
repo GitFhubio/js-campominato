@@ -91,11 +91,12 @@ this.classList.add('verde');
 var audiosuccess = new Audio('css/success.mp3');
 audiosuccess.play();
 // console.log(this.nextSibling.innerHTML);
-if (isMinaVicina(this)){
+ if (isMinaVicina(this)){
   this.append('\nBC!')
+ }
 }
-}
- else if(giocata.includes('malevolo')){alert('Hai preso una mina: hai perso');
+ else if(giocata.includes('malevolo')){
+alert('Hai preso una mina: hai perso');
 this.classList.add('rosso');
 var audiofail = new Audio('css/exp.mp3');
 audiofail.play();
