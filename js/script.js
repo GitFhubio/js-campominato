@@ -61,6 +61,7 @@ if(giocateVinte.length==84){
 }
 console.log(giocateVinte);
 
+// nota0: if giocateVinte.length==84 poteva essere messo anche dentro il while
 // nota1: teoricamente per la generazione mine andava bene anche un ciclo
 // for del tipo for (var i = 0;mine.length<16; i++) ma è una forzatura
 // nota2:esiste la funzione per ordinare array arrayName.sort(function(a, b){return a-b}); che però in questo esercizio non serve,almeno per come l'ho pensato io
