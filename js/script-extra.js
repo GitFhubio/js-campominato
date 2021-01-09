@@ -121,8 +121,8 @@ var audiosuccess = new Audio('css/success.mp3');
 audiosuccess.play();
 giocateVinte.push(giocata);
 console.log(giocateVinte);
-if (giocateVinte.length==miomax) {
-alert('Ma sei un mostro!');
+if (giocateVinte.length==miomax-16) {
+alert('Ma sei un mostro!Bravissimo,hai vinto');
 }
 // console.log(this.nextSibling.innerHTML);
  if (isMinaVicina(this)){
@@ -180,5 +180,4 @@ PostAdiacenti(this)[i].classList.add('verde');
 }
 
 // Nota1:mi sono divertito molto.Dedicato a SS.
-// Nota2:Non ho inserito la condizione vittoria finale
-// Nota3: (c+'') è un trucco per considerare il numero una stringa,alternativa a toString
+// Nota2: (c+'') è un trucco per considerare il numero una stringa,alternativa a toString
