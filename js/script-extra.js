@@ -143,8 +143,8 @@ audiofail.play();
 
 // prendo solo il quadrato interno senza la cornice esterna per
 // "allargare la zona sicura" quando non ci sono mine nei paraggi
-// Parto da 11 cosi levo la prima riga superiore interna,
-// il resto della cornice la escludo con condizione sulle cifre 0 e 9
+// Parto da 11 cosi levo la prima riga superiore,
+// il resto della cornice lo escludo con condizione sulle cifre 0 e 9
 // che non devono essere contenute nel numero
 
 // Per i livelli medium e hard il mio max non è più 100,
@@ -172,5 +172,5 @@ PostAdiacenti(this)[i].classList.add('verde');
 }
 }
 
-// Nota:mi sono divertito molto.
-// Dedicato a SS.
+// Nota1:mi sono divertito molto.Dedicato a SS.
+// Nota2:Non ho inserito la condizione vittoria finale
