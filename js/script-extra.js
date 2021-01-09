@@ -86,8 +86,9 @@ mine.push(random);
 }
 return mine;
 }
-var mine= mine_generator(16,1,miomax);
-console.log(mine);
+var mine= mine_generator(16,0,miomax-1);
+
+console.log(mine.sort(function(a, b){return a-b}));
 
 var griglia= document.getElementById('griglia');
 for (var x = 0; x < miomax; x++) {
@@ -104,10 +105,10 @@ for (var x = 0; x < miomax; x++) {
 var quadrati= document.getElementsByClassName('quadrato');
 
 console.log(quadrati);
-
+var giocateVinte=[];
 for (var i = 0; i < quadrati.length; i++) {
 quadrati[i].addEventListener('click',function(){
-var giocateVinte=[];
+
 
 var giocata=this.className;
 console.log(giocata);
@@ -118,6 +119,11 @@ alert('Bravo,hai evitato mine');
 this.classList.add('verde');
 var audiosuccess = new Audio('css/success.mp3');
 audiosuccess.play();
+giocateVinte.push(giocata);
+console.log(giocateVinte);
+if (giocateVinte.length==miomax) {
+alert('Ma sei un mostro!');
+}
 // console.log(this.nextSibling.innerHTML);
  if (isMinaVicina(this)){
   this.append('\nBC!')
