@@ -67,7 +67,7 @@ else {
 }
 
 var mine= mine_generator(16,1,miomax);
-console.log(mine);
+console.log(mine.sort(function(a, b){return a-b}));
 var i=0;
 var giocateVinte=[];
 var giocata;
