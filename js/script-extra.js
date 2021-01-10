@@ -168,6 +168,20 @@ quadrati[c].addEventListener('click',function(){
 
 var giocata=this.className;
 if (!isMinaVicina(this) && !giocata.includes('malevolo')){
+  var vid = document.getElementById("myVideo");
+  vid.play();
+  vid.style.opacity="1";
+  var festa=document.getElementsByClassName("festa")[0];
+  festa.innerText="Grandissimo,non ci sono mine nei paraggi";
+  vid.addEventListener("timeupdate", function(){
+    if(this.currentTime >= 12) {
+         this.pause();
+         this.style.opacity="0";
+         this.currentTime = 0;
+         festa.innerText="";
+     }
+   })
+
 for (var i = 0; i < PreAdiacenti(this).length; i++) {
 PreAdiacenti(this)[i].classList.add('verde');
 }
@@ -178,6 +192,5 @@ PostAdiacenti(this)[i].classList.add('verde');
 });
 }
 }
-
 // Nota1:mi sono divertito molto.Dedicato a SS.
 // Nota2: (c+'') è un trucco per considerare il numero una stringa,alternativa a toString
