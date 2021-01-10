@@ -172,7 +172,7 @@ audiofail.play();
 
 
 for (var c = 11;c< quadrati.length-10; c++)
-{if(c % 10 !== 0 && (c+'').indexOf('9') == -1 ){
+{if(c % 10 !== 0 && (c+1) % 10 !==0 ){
 
 quadrati[c].addEventListener('click',function(){
 
