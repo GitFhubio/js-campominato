@@ -174,7 +174,7 @@ audiofail.play();
 var estremo= miomax-1;
 var ind = estremo.toString().charAt(0);
 for (var c = 11;c< quadrati.length; c++)
-{if((c+'').indexOf('0') == -1 && (c+'').indexOf('9') == -1 && (c+'').indexOf(ind) !== 0){
+{if(c % 10 !== 0 && (c+'').indexOf('9') == -1 && (c+'').indexOf(ind) !== 0){
 
 quadrati[c].addEventListener('click',function(){
 
