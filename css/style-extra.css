@@ -45,3 +45,22 @@ align-items: center;
 position:fixed;
 bottom:20px;
 }
+
+.verde-cliccato{
+  background-color: green;
+  position:relative;
+
+}
+.verde-cliccato:after{
+  content:"";
+top:0;
+right:2px;
+position:absolute;
+-webkit-transform: rotate(45deg);
+-ms-transform: rotate(45deg);
+transform: rotate(45deg);
+width: 2px;
+height: 5px;
+border: solid #000;
+border-width: 0 2px 2px 0;
+}

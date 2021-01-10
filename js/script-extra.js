@@ -117,7 +117,7 @@ console.log(PostAdiacenti(this));
 suggerimento.innerText='';
 if (giocata.includes('buono')){
 // alert('Bravo,hai evitato mine');
-this.classList.add('verde');
+this.classList.add('verde-cliccato');
 var audiosuccess = new Audio('css/success.mp3');
 
 audiosuccess.play();
