@@ -177,7 +177,7 @@ if (!isMinaVicina(this) && !giocata.includes('malevolo')){
   vid.play();
   vid.style.opacity="1";
   var festa=document.getElementsByClassName("festa")[0];
-  festa.innerText="Grandissimo, non ci sono mine nei paraggi della casella "+this.innerHTML;
+  festa.innerText="Grandissimo, non ci sono mine nei paraggi della casella "+this.innerHTML+" !";
   var suggerimento=document.getElementById('suggerimento');
   setTimeout(function(){
     suggerimento.innerText='Suggerimento:applicare l\'ultimo punto può farti arrivare alla vittoria molto più facilmente!' ;
