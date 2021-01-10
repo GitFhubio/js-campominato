@@ -2,9 +2,10 @@
 // se i quadrati vicini a quello cliccato sono sicuri si rivelano
 // se nei paraggi c'è una mina esce il segnale bc! (be careful!)
 
-var choice;
+var livelli=['easy','hard','medium'];
 var miomax;
-while (choice!=='easy' && choice!=='medium' && choice!=='hard')
+var choice;
+while (livelli.indexOf(choice)==-1)
 {choice=prompt('Scegli livello easy,medium o hard');}
 
 
