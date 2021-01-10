@@ -6,12 +6,24 @@
   <link rel="stylesheet" href="css/style-extra.css">
 </head>
 <body>
-  <div class="container">
-    <div id="griglia" class="flex">
-
+<header>
+    <h1>Campo Minato</h1>
+</header>
+<div class="container flex">
+  <div id="griglia" class="flex">
+  </div>
+    <div class="legenda">
+      <h3>Legenda</h3>
+   <ul>
+    <li>Il simbolo '<strong>v</strong>' indica che hai cliccato sulla casella </li>
+    <li>Il simbolo BC! sta per Be Careful:c'è una mina in almeno una delle otto caselle che circondano quella su cui hai cliccato!</li>
+    <li>Se nei paraggi della casella cliccata non ci sono mine parte un jingle.</li>
+    <li>Fai attenzione,nei paraggi di una casella rivelatasi senza mina ma non cliccata può esserci una mina:cliccaci sopra per aumentare le tue chance di successo.</li>
+    <li>Vinci se riesci a scoprire tutte le caselle senza mine</li>
+   </ul>
     </div>
-
-    <div class="flex">
+    </div>
+    <div class="video flex">
       <video id="myVideo" controls autoplay width="90" height="110">
         <source src="css/lundini.mp4" type="video/mp4">
         </video>
@@ -20,7 +32,7 @@
   <div id="suggerimento">
 
   </div>
-    </div>
+
     <script src="js/script-extra.js" charset="utf-8"></script>
   </body>
   </html>

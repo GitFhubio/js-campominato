@@ -44,6 +44,7 @@ align-items: center;
 #suggerimento{
 position:fixed;
 bottom:20px;
+left:30px;
 }
 
 .verde-cliccato{
@@ -63,4 +64,19 @@ width: 2px;
 height: 5px;
 border: solid #000;
 border-width: 0 2px 2px 0;
+}
+
+.legenda{
+  width:500px;
+}
+.container{
+justify-content: space-around;
+}
+header{
+  margin:20px 0;
+  text-align: center;
+}
+.video{
+  margin-top: 20px;
+justify-content: center;
 }

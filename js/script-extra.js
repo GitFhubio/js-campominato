@@ -128,7 +128,7 @@ alert('Ma sei un mostro!Bravissimo,hai vinto');
 }
 // console.log(this.nextSibling.innerHTML);
  if (isMinaVicina(this)){
-  this.append('\nBC!')
+  this.append('\nBC!');
 }
 // else{
 // for (var i = 0; i < PreAdiacenti(this).length; i++) {
@@ -174,10 +174,10 @@ if (!isMinaVicina(this) && !giocata.includes('malevolo')){
   vid.play();
   vid.style.opacity="1";
   var festa=document.getElementsByClassName("festa")[0];
-  festa.innerText="Grandissimo,non ci sono mine nei paraggi della casella"+this.innerHTML;
+  festa.innerText="Grandissimo, non ci sono mine nei paraggi della casella "+this.innerHTML;
   var suggerimento=document.getElementById('suggerimento');
   setTimeout(function(){
-    suggerimento.innerText='Suggerimento:clicca comunque sulle caselle senza mine che hai scoperto per vedere se a loro volta hanno mine nei paraggi';
+    suggerimento.innerText='Suggerimento: clicca comunque sulle caselle senza mine che hai scoperto per vedere se a loro volta hanno mine nei paraggi';
   },14000);
 
 
