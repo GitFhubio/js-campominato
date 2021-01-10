@@ -12,6 +12,10 @@ var choice;
 var miomax;
 while (choice!=='easy' && choice!=='medium' && choice!=='hard')
 {choice=prompt('Scegli livello easy,medium o hard');}
+// oppure più elegantemente
+// var livelli=['easy','hard','medium'];
+// while (livelli.indexOf(choice)==-1)
+// {choice=prompt('Scegli livello easy,medium o hard');}
 
 function selectlevel(x){
 switch (x)

@@ -180,7 +180,7 @@ if (!isMinaVicina(this) && !giocata.includes('malevolo')){
   festa.innerText="Grandissimo, non ci sono mine nei paraggi della casella "+this.innerHTML;
   var suggerimento=document.getElementById('suggerimento');
   setTimeout(function(){
-    suggerimento.innerText='Suggerimento: clicca comunque sulle caselle senza mine che hai scoperto per vedere se a loro volta hanno mine nei paraggi';
+    suggerimento.innerText='Suggerimento:applicare l\'ultimo punto può farti arrivare alla vittoria molto più facilmente!' ;
   },14000);
 
 
