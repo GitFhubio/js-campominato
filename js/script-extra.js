@@ -114,10 +114,12 @@ var giocata=this.className;
 console.log(giocata);
 console.log(PreAdiacenti(this));
 console.log(PostAdiacenti(this));
+suggerimento.innerText='';
 if (giocata.includes('buono')){
-alert('Bravo,hai evitato mine');
+// alert('Bravo,hai evitato mine');
 this.classList.add('verde');
 var audiosuccess = new Audio('css/success.mp3');
+
 audiosuccess.play();
 giocateVinte.push(giocata);
 console.log(giocateVinte);
@@ -138,7 +140,7 @@ alert('Ma sei un mostro!Bravissimo,hai vinto');
 // }
 }
  else if(giocata.includes('malevolo')){
-alert('Hai preso una mina: hai perso');
+// alert('Hai preso una mina: hai perso');
 this.classList.add('rosso');
 var audiofail = new Audio('css/exp.mp3');
 audiofail.play();
@@ -172,13 +174,22 @@ if (!isMinaVicina(this) && !giocata.includes('malevolo')){
   vid.play();
   vid.style.opacity="1";
   var festa=document.getElementsByClassName("festa")[0];
-  festa.innerText="Grandissimo,non ci sono mine nei paraggi";
+  festa.innerText="Grandissimo,non ci sono mine nei paraggi della casella"+this.innerHTML;
+  var suggerimento=document.getElementById('suggerimento');
+  setTimeout(function(){
+    suggerimento.innerText='Suggerimento:clicca comunque sulle caselle senza mine che hai scoperto per vedere se a loro volta hanno mine nei paraggi';
+  },14000);
+
+
   vid.addEventListener("timeupdate", function(){
     if(this.currentTime >= 12) {
          this.pause();
          this.style.opacity="0";
          this.currentTime = 0;
          festa.innerText="";
+         setTimeout(function(){
+            suggerimento.style.display = "none";
+          },10000);
      }
    })
 
@@ -192,5 +203,9 @@ PostAdiacenti(this)[i].classList.add('verde');
 });
 }
 }
+
+
+
+
 // Nota1:mi sono divertito molto.Dedicato a SS.
 // Nota2: (c+'') è un trucco per considerare il numero una stringa,alternativa a toString
