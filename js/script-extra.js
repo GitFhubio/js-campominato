@@ -27,7 +27,7 @@ return 100;
 miomax=selectlevel(choice);
 
 function isMinaVicina(x){
-if(mine.includes(parseInt(x.nextSibling.innerHTML)) || mine.includes(parseInt(x.previousSibling.innerHTML)) ||
+if((x.nextSibling)!==null && mine.includes(parseInt(x.nextSibling.innerHTML)) || mine.includes(parseInt(x.previousSibling.innerHTML)) ||
 mine.includes(parseInt(x.innerHTML)+10)||
 mine.includes(parseInt(x.innerHTML)-10)||
 mine.includes(parseInt(x.innerHTML)+9)||
@@ -38,6 +38,9 @@ mine.includes(parseInt(x.innerHTML)-11)
 {return true;
 }else{return false;}
 }
+
+// ho dovuto mettere la condizione if (x.nextSibling)!==null perché altrimenti la
+// casella 99 mi dava problemi
 
 function PreAdiacenti(x)
 {
