@@ -171,10 +171,8 @@ audiofail.play();
 // cui devo inserire ulteriore condizione(ricavandomi l'ind)
 
 
-var estremo= miomax-1;
-var ind = estremo.toString().charAt(0);
-for (var c = 11;c< quadrati.length; c++)
-{if(c % 10 !== 0 && (c+'').indexOf('9') == -1 && (c+'').indexOf(ind) !== 0){
+for (var c = 11;c< quadrati.length-10; c++)
+{if(c % 10 !== 0 && (c+'').indexOf('9') == -1 ){
 
 quadrati[c].addEventListener('click',function(){
 
