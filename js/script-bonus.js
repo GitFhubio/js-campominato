@@ -10,12 +10,12 @@
 
 var choice;
 var miomax;
-while (choice!=='easy' && choice!=='medium' && choice!=='hard')
-{choice=prompt('Scegli livello easy,medium o hard');}
-// oppure più elegantemente
-// var livelli=['easy','hard','medium'];
-// while (livelli.indexOf(choice)==-1)
+// while (choice!=='easy' && choice!=='medium' && choice!=='hard')
 // {choice=prompt('Scegli livello easy,medium o hard');}
+// oppure più elegantemente
+var livelli=['easy','hard','medium'];
+while (livelli.indexOf(choice)==-1)
+{choice=prompt('Scegli livello easy,medium o hard');}
 
 function selectlevel(x){
 switch (x)
@@ -72,21 +72,50 @@ else {
 
 var mine= mine_generator(16,1,miomax);
 console.log(mine.sort(function(a, b){return a-b}));
+
 var i=0;
 var giocateVinte=[];
 var giocata;
-while (giocateVinte.length<84 && !is_mine(giocata)) {
+
+while (giocateVinte.length<(miomax-16) && !is_mine(giocata)) {
 giocata=parseInt(prompt('inserisci un numero tra 1 e '+miomax));
-if (is_valid(giocata) && !giocateVinte.includes(giocata) && !is_mine(giocata)){
-giocateVinte.push(giocata);
+if (is_valid(giocata)){
+if(giocateVinte.includes(giocata)){alert('Hai già inserito questo numero');}
+else {if(is_mine(giocata)){
+  alert('Hai preso una mina')}
 }
-if(giocateVinte.length==84){
+giocateVinte.push(giocata);
+if(giocateVinte.length==(miomax-16)){
   alert('Complimenti hai vinto');
 }
-else if(is_mine(giocata)){
-  alert('Hai preso una mina.Le tue giocate vinte complessive sono state '+giocateVinte.length+' su '+(miomax-16));
 }
+
+else {
+  alert('Devi inserire un numero tra 1 e '+miomax)
 }
 
 
+}
+
+alert('il tuo punteggio è '+(giocateVinte.length-1));
 console.log(giocateVinte);
+
+// script mio
+// var i=0;
+// var giocateVinte=[];
+// var giocata;
+// while (giocateVinte.length<(miomax-16) && !is_mine(giocata)) {
+// giocata=parseInt(prompt('inserisci un numero tra 1 e '+miomax));
+// if (is_valid(giocata) && !giocateVinte.includes(giocata) && !is_mine(giocata)){
+// giocateVinte.push(giocata);
+// }
+// if(giocateVinte.length==(miomax-16)){
+//   alert('Complimenti hai vinto');
+// }
+// else if(is_mine(giocata)){
+//   alert('Hai preso una mina.Le tue giocate vinte complessive sono state '+giocateVinte.length+' su '+(miomax-16));
+// }
+// }
+//
+//
+// console.log(giocateVinte);
