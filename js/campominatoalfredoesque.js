@@ -2,9 +2,10 @@
 // se i quadrati vicini a quello cliccato sono sicuri si rivelano
 // se nei paraggi c'è una mina esce il segnale bc! (be careful!)
 
-var choice;
+var livelli=['easy','hard','medium'];
 var miomax;
-while (choice!=='easy' && choice!=='medium' && choice!=='hard')
+var choice;
+while (livelli.indexOf(choice)==-1)
 {choice=prompt('Scegli livello easy,medium o hard');}
 
 
@@ -25,48 +26,66 @@ return 100;
 }
 
 miomax=selectlevel(choice);
-
-function isMinaVicina(x){
-if((x.nextSibling)!==null && mine.includes(parseInt(x.nextSibling.innerHTML)) || mine.includes(parseInt(x.previousSibling.innerHTML)) ||
-mine.includes(parseInt(x.innerHTML)+10)||
-mine.includes(parseInt(x.innerHTML)-10)||
-mine.includes(parseInt(x.innerHTML)+9)||
-mine.includes(parseInt(x.innerHTML)-9)||
-mine.includes(parseInt(x.innerHTML)+11)||
-mine.includes(parseInt(x.innerHTML)-11)
-)
-{return true;
-}else{return false;}
+// APPLICATO CONSIGLIO ALFREDO PER EVITARE DI RIPETERE INCLUDES IN ISMINAVICINA
+function isMinaVicina(x,max){
+  var arr=[];
+  if(parseInt(x.innerHTML)!==max){
+  var arrayAdiacenti=[parseInt(x.nextSibling.innerHTML),parseInt(x.previousSibling.innerHTML),parseInt(x.innerHTML)+10,parseInt(x.innerHTML)-10,parseInt(x.innerHTML)+9,parseInt(x.innerHTML)-9,parseInt(x.innerHTML)+11,parseInt(x.innerHTML)-11]
+  ;}
+else{
+  var arrayAdiacenti=[parseInt(x.previousSibling.innerHTML),parseInt(x.innerHTML)+10,parseInt(x.innerHTML)-10,parseInt(x.innerHTML)+9,parseInt(x.innerHTML)-9,parseInt(x.innerHTML)+11,parseInt(x.innerHTML)-11];
 }
 
-// ho dovuto mettere la condizione if (x.nextSibling)!==null perché altrimenti la
-// casella 99 mi dava problemi
+  for (var i = 0; i < arrayAdiacenti.length; i++) {
+    if(mine.includes(arrayAdiacenti[i])){
+      arr.push(arrayAdiacenti[i]);
+    }
+}
+console.log('questa è la lunghezza array vicini'+arr.length);
+if (arr.length!==0){
+  return true;
+}else{
+  return false;
+}
+}
+// function isMinaVicina(x){
+// if((x.nextSibling)!==null && mine.includes(parseInt(x.nextSibling.innerHTML)) || mine.includes(parseInt(x.previousSibling.innerHTML)) ||
+// mine.includes(parseInt(x.innerHTML)+10)||
+// mine.includes(parseInt(x.innerHTML)-10)||
+// mine.includes(parseInt(x.innerHTML)+9)||
+// mine.includes(parseInt(x.innerHTML)-9)||
+// mine.includes(parseInt(x.innerHTML)+11)||
+// mine.includes(parseInt(x.innerHTML)-11)
+// )
+// {return true;
+// }else{return false;}
+// }
 
-function PreAdiacenti(x)
+function PreAdiacenti(x,elementi)
 {
   var array=[];
 for (var i = 0; i < parseInt(x.innerHTML); i++) {
-  if(parseInt(quadrati[i].innerHTML)==parseInt(x.innerHTML)-10||
-parseInt(quadrati[i].innerHTML)==parseInt(x.innerHTML)-9||
-parseInt(quadrati[i].innerHTML)==parseInt(x.innerHTML)-11)
+  if(parseInt(elementi[i].innerHTML)==parseInt(x.innerHTML)-10||
+parseInt(elementi[i].innerHTML)==parseInt(x.innerHTML)-9||
+parseInt(elementi[i].innerHTML)==parseInt(x.innerHTML)-11)
   {
-  array.push(quadrati[i]);
+  array.push(elementi[i]);
   }
 
 }
 array.push(x.previousSibling);
 return array;
 }
-function PostAdiacenti(x)
+function PostAdiacenti(x,elementi,max)
 {
   var array2=[];
 
-for (var v = quadrati.length-1; v > parseInt(x.innerHTML); v--) {
-  if(parseInt(quadrati[v].innerHTML)==parseInt(x.innerHTML)+10||
-parseInt(quadrati[v].innerHTML)==parseInt(x.innerHTML)+9||
-parseInt(quadrati[v].innerHTML)==parseInt(x.innerHTML)+11)
+for (var v = max-1; v > parseInt(x.innerHTML); v--) {
+  if(parseInt(elementi[v].innerHTML)==parseInt(x.innerHTML)+10||
+parseInt(elementi[v].innerHTML)==parseInt(x.innerHTML)+9||
+parseInt(elementi[v].innerHTML)==parseInt(x.innerHTML)+11)
   {
-  array2.push(quadrati[v]);
+  array2.push(elementi[v]);
   }
 
 }
@@ -93,8 +112,9 @@ var mine= mine_generator(16,0,miomax-1);
 
 console.log(mine.sort(function(a, b){return a-b}));
 
+function generaGriglia(max){
 var griglia= document.getElementById('griglia');
-for (var x = 0; x < miomax; x++) {
+for (var x = 0; x < max; x++) {
     if (!mine.includes(x))
    {griglia.innerHTML+='<div class="quadrato buono">'+x+'</div>';
 
@@ -104,7 +124,8 @@ for (var x = 0; x < miomax; x++) {
    }
 
 }
-
+}
+generaGriglia(miomax);
 var quadrati= document.getElementsByClassName('quadrato');
 
 console.log(quadrati);
@@ -115,8 +136,8 @@ quadrati[i].addEventListener('click',function(){
 
 var giocata=this.className;
 console.log(giocata);
-console.log(PreAdiacenti(this));
-console.log(PostAdiacenti(this));
+// console.log(PreAdiacenti(this));
+// console.log(PostAdiacenti(this));
 suggerimento.innerText='';
 if (giocata.includes('buono')){
 // alert('Bravo,hai evitato mine');
@@ -130,7 +151,7 @@ if (giocateVinte.length==miomax-16) {
 alert('Ma sei un mostro!Bravissimo,hai vinto');
 }
 // console.log(this.nextSibling.innerHTML);
- if (isMinaVicina(this)){
+ if (isMinaVicina(this,miomax-1)){
   this.append('\nBC!');
 }
 // else{
@@ -164,20 +185,18 @@ audiofail.play();
 // cui devo inserire ulteriore condizione(ricavandomi l'ind)
 
 
-var estremo= miomax-1;
-var ind = estremo.toString().charAt(0);
-for (var c = 11;c< quadrati.length; c++)
-{if((c+'').indexOf('0') == -1 && (c+'').indexOf('9') == -1 && (c+'').indexOf(ind) !== 0){
+for (var c = 11;c< quadrati.length-10; c++)
+{if(c % 10 !== 0 && ((c+1) % 10) !==0 ){
 
 quadrati[c].addEventListener('click',function(){
 
 var giocata=this.className;
-if (!isMinaVicina(this) && !giocata.includes('malevolo')){
+if (!isMinaVicina(this,miomax-1) && !giocata.includes('malevolo')){
   var vid = document.getElementById("myVideo");
   vid.play();
   vid.style.opacity="1";
   var festa=document.getElementsByClassName("festa")[0];
-  festa.innerText="Grandissimo, non ci sono mine nei paraggi della casella "+this.innerHTML+" !";
+  festa.innerText="Grandissimo, non ci sono mine nei paraggi della casella "+this.innerHTML;
   var suggerimento=document.getElementById('suggerimento');
   setTimeout(function(){
     suggerimento.innerText='Suggerimento:applicare l\'ultimo punto può farti arrivare alla vittoria molto più facilmente!' ;
@@ -196,11 +215,11 @@ if (!isMinaVicina(this) && !giocata.includes('malevolo')){
      }
    })
 
-for (var i = 0; i < PreAdiacenti(this).length; i++) {
-PreAdiacenti(this)[i].classList.add('verde');
+for (var i = 0; i < PreAdiacenti(this,quadrati).length; i++) {
+PreAdiacenti(this,quadrati)[i].classList.add('verde');
 }
-for (var i = 0; i < PostAdiacenti(this).length; i++) {
-PostAdiacenti(this)[i].classList.add('verde');
+for (var i = 0; i < PostAdiacenti(this,quadrati,miomax).length; i++) {
+PostAdiacenti(this,quadrati,miomax)[i].classList.add('verde');
 }
 }
 });

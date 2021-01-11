@@ -35,8 +35,6 @@ return 100;
 
 miomax=selectlevel(choice);
 
-// funzione per generare mine
-
 // funzione per vedere se è una mina
 
 function is_mine(x,mine)
@@ -46,6 +44,18 @@ function is_mine(x,mine)
   }else{
     return false;
   }
+}
+
+function mine_generator(n,min,max){
+var mine=[];
+var random;
+while(mine.length<n) {
+random=Math.floor(Math.random()*(max+1-min)+min);
+if (!mine.includes(random)){
+mine.push(random);
+}
+}
+return mine;
 }
 
 
@@ -64,15 +74,9 @@ function gioco(max){
 var i=0;
 var giocateVinte=[];
 var giocata;
-var mine=[];
+var mine=mine_generator(16,1,max);
 var random;
 
-while(mine.length<16) {
-random=Math.floor(Math.random()*max+1);
-if (!mine.includes(random)){
-mine.push(random);
-}
-}
 console.log(mine.sort(function(a, b){return a-b}));
 
 while (giocateVinte.length<(max-16) && !is_mine(giocata,mine)) {
