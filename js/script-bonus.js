@@ -36,21 +36,10 @@ return 100;
 miomax=selectlevel(choice);
 
 // funzione per generare mine
-function mine_generator(n,min,max){
-var mine=[];
-var random;
-while(mine.length<n) {
-random=Math.floor(Math.random()*(max+1-min)+min);
-if (!mine.includes(random)){
-mine.push(random);
-}
-}
-return mine;
-}
 
 // funzione per vedere se è una mina
 
-function is_mine(x)
+function is_mine(x,mine)
 {
   if(mine.includes(x)){
     return true;
@@ -70,21 +59,27 @@ else {
 }
 }
 
-var mine= mine_generator(16,1,miomax);
-console.log(mine.sort(function(a, b){return a-b}));
-
 function gioco(max){
 
 var i=0;
 var giocateVinte=[];
 var giocata;
+var mine=[];
+var random;
 
+while(mine.length<16) {
+random=Math.floor(Math.random()*max+1);
+if (!mine.includes(random)){
+mine.push(random);
+}
+}
+console.log(mine.sort(function(a, b){return a-b}));
 
-while (giocateVinte.length<(max-16) && !is_mine(giocata)) {
+while (giocateVinte.length<(max-16) && !is_mine(giocata,mine)) {
 giocata=parseInt(prompt('inserisci un numero tra 1 e '+max));
 if (is_valid(giocata,max)){
 if(giocateVinte.includes(giocata)){alert('Hai già inserito questo numero');}
-else {if(is_mine(giocata)){
+else {if(is_mine(giocata,mine)){
   alert('Hai preso una mina')}
 }
 giocateVinte.push(giocata);
