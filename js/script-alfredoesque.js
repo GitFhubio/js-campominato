@@ -30,10 +30,10 @@ miomax=selectlevel(choice);
 function isMinaVicina(x,max){
   var arr=[];
   if(parseInt(x.innerHTML)!==max){
-  var arrayAdiacenti=[parseInt(x.nextSibling.innerHTML),parseInt(x.previousSibling.innerHTML),parseInt(x.innerHTML)+10,parseInt(x.innerHTML)-10,mine.includes(parseInt(x.innerHTML)+9),parseInt(x.innerHTML)-9,parseInt(x.innerHTML)+11,parseInt(x.innerHTML)-11]
+  var arrayAdiacenti=[parseInt(x.nextSibling.innerHTML),parseInt(x.previousSibling.innerHTML),parseInt(x.innerHTML)+10,parseInt(x.innerHTML)-10,parseInt(x.innerHTML)+9,parseInt(x.innerHTML)-9,parseInt(x.innerHTML)+11,parseInt(x.innerHTML)-11]
   ;}
 else{
-  var arrayAdiacenti=[parseInt(x.previousSibling.innerHTML),parseInt(x.innerHTML)+10,parseInt(x.innerHTML)-10,mine.includes(parseInt(x.innerHTML)+9),parseInt(x.innerHTML)-9,parseInt(x.innerHTML)+11,parseInt(x.innerHTML)-11];
+  var arrayAdiacenti=[parseInt(x.previousSibling.innerHTML),parseInt(x.innerHTML)+10,parseInt(x.innerHTML)-10,parseInt(x.innerHTML)+9,parseInt(x.innerHTML)-9,parseInt(x.innerHTML)+11,parseInt(x.innerHTML)-11];
 }
 
   for (var i = 0; i < arrayAdiacenti.length; i++) {
