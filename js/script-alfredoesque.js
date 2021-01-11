@@ -27,37 +27,39 @@ return 100;
 
 miomax=selectlevel(choice);
 // APPLICATO CONSIGLIO ALFREDO PER EVITARE DI RIPETERE INCLUDES IN ISMINAVICINA
-// function isMinaVicina(x){
-//   var arr=[];
-//   if(parseInt(x.innerHTML)!==99){
-//   var arrayAdiacenti=[parseInt(x.nextSibling.innerHTML),parseInt(x.previousSibling.innerHTML),parseInt(x.innerHTML)+10,parseInt(x.innerHTML)-10,mine.includes(parseInt(x.innerHTML)+9),parseInt(x.innerHTML)-9,parseInt(x.innerHTML)+11,parseInt(x.innerHTML)-11];}
-// else{
-//   var arrayAdiacenti=[parseInt(x.previousSibling.innerHTML),parseInt(x.innerHTML)+10,parseInt(x.innerHTML)-10,mine.includes(parseInt(x.innerHTML)+9),parseInt(x.innerHTML)-9,parseInt(x.innerHTML)+11,parseInt(x.innerHTML)-11];
-// }
-//
-//   for (var i = 0; i < arrayAdiacenti.length; i++) {
-//     if(mine.includes(arrayAdiacenti[i])){
-//       arr.push(arrayAdiacenti[i]);
-//     }
-// }
-// if (arr.length!==0){
-//   return true;
-// }else{
-//   return false;
-// }
-// }
-function isMinaVicina(x){
-if((x.nextSibling)!==null && mine.includes(parseInt(x.nextSibling.innerHTML)) || mine.includes(parseInt(x.previousSibling.innerHTML)) ||
-mine.includes(parseInt(x.innerHTML)+10)||
-mine.includes(parseInt(x.innerHTML)-10)||
-mine.includes(parseInt(x.innerHTML)+9)||
-mine.includes(parseInt(x.innerHTML)-9)||
-mine.includes(parseInt(x.innerHTML)+11)||
-mine.includes(parseInt(x.innerHTML)-11)
-)
-{return true;
-}else{return false;}
+function isMinaVicina(x,max){
+  var arr=[];
+  if(parseInt(x.innerHTML)!==max){
+  var arrayAdiacenti=[parseInt(x.nextSibling.innerHTML),parseInt(x.previousSibling.innerHTML),parseInt(x.innerHTML)+10,parseInt(x.innerHTML)-10,mine.includes(parseInt(x.innerHTML)+9),parseInt(x.innerHTML)-9,parseInt(x.innerHTML)+11,parseInt(x.innerHTML)-11]
+  ;}
+else{
+  var arrayAdiacenti=[parseInt(x.previousSibling.innerHTML),parseInt(x.innerHTML)+10,parseInt(x.innerHTML)-10,mine.includes(parseInt(x.innerHTML)+9),parseInt(x.innerHTML)-9,parseInt(x.innerHTML)+11,parseInt(x.innerHTML)-11];
 }
+
+  for (var i = 0; i < arrayAdiacenti.length; i++) {
+    if(mine.includes(arrayAdiacenti[i])){
+      arr.push(arrayAdiacenti[i]);
+    }
+}
+console.log('questa è la lunghezza array vicini'+arr.length);
+if (arr.length!==0){
+  return true;
+}else{
+  return false;
+}
+}
+// function isMinaVicina(x){
+// if((x.nextSibling)!==null && mine.includes(parseInt(x.nextSibling.innerHTML)) || mine.includes(parseInt(x.previousSibling.innerHTML)) ||
+// mine.includes(parseInt(x.innerHTML)+10)||
+// mine.includes(parseInt(x.innerHTML)-10)||
+// mine.includes(parseInt(x.innerHTML)+9)||
+// mine.includes(parseInt(x.innerHTML)-9)||
+// mine.includes(parseInt(x.innerHTML)+11)||
+// mine.includes(parseInt(x.innerHTML)-11)
+// )
+// {return true;
+// }else{return false;}
+// }
 
 function PreAdiacenti(x,elementi)
 {
@@ -149,7 +151,7 @@ if (giocateVinte.length==miomax-16) {
 alert('Ma sei un mostro!Bravissimo,hai vinto');
 }
 // console.log(this.nextSibling.innerHTML);
- if (isMinaVicina(this)){
+ if (isMinaVicina(this,miomax-1)){
   this.append('\nBC!');
 }
 // else{
@@ -189,7 +191,7 @@ for (var c = 11;c< quadrati.length-10; c++)
 quadrati[c].addEventListener('click',function(){
 
 var giocata=this.className;
-if (!isMinaVicina(this) && !giocata.includes('malevolo')){
+if (!isMinaVicina(this,miomax-1) && !giocata.includes('malevolo')){
   var vid = document.getElementById("myVideo");
   vid.play();
   vid.style.opacity="1";
