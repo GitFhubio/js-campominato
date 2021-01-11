@@ -73,25 +73,28 @@ else {
 var mine= mine_generator(16,1,miomax);
 console.log(mine.sort(function(a, b){return a-b}));
 
+function gioco(max){
+
 var i=0;
 var giocateVinte=[];
 var giocata;
 
-while (giocateVinte.length<(miomax-16) && !is_mine(giocata)) {
-giocata=parseInt(prompt('inserisci un numero tra 1 e '+miomax));
+
+while (giocateVinte.length<(max-16) && !is_mine(giocata)) {
+giocata=parseInt(prompt('inserisci un numero tra 1 e '+max));
 if (is_valid(giocata)){
 if(giocateVinte.includes(giocata)){alert('Hai già inserito questo numero');}
 else {if(is_mine(giocata)){
   alert('Hai preso una mina')}
 }
 giocateVinte.push(giocata);
-if(giocateVinte.length==(miomax-16)){
+if(giocateVinte.length==(max-16)){
   alert('Complimenti hai vinto');
 }
 }
 
 else {
-  alert('Devi inserire un numero tra 1 e '+miomax)
+  alert('Devi inserire un numero tra 1 e '+max)
 }
 
 
@@ -99,7 +102,9 @@ else {
 
 alert('il tuo punteggio è '+(giocateVinte.length-1));
 console.log(giocateVinte);
+}
 
+gioco(miomax);
 // script mio
 // var i=0;
 // var giocateVinte=[];
