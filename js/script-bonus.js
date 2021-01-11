@@ -62,8 +62,8 @@ function is_mine(x)
 
 // funzione per vedere se il numero è valido
 
-function is_valid (x){
-if (!isNaN(x) &&  x>=1 && x<=miomax)
+function is_valid (x,max){
+if (!isNaN(x) &&  x>=1 && x<=max)
 {return true;}
 else {
   return false;
@@ -82,7 +82,7 @@ var giocata;
 
 while (giocateVinte.length<(max-16) && !is_mine(giocata)) {
 giocata=parseInt(prompt('inserisci un numero tra 1 e '+max));
-if (is_valid(giocata)){
+if (is_valid(giocata,max)){
 if(giocateVinte.includes(giocata)){alert('Hai già inserito questo numero');}
 else {if(is_mine(giocata)){
   alert('Hai preso una mina')}
