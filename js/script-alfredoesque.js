@@ -27,24 +27,36 @@ return 100;
 
 miomax=selectlevel(choice);
 // APPLICATO CONSIGLIO ALFREDO PER EVITARE DI RIPETERE INCLUDES IN ISMINAVICINA
+// function isMinaVicina(x){
+//   var arr=[];
+//   if(parseInt(x.innerHTML)!==99){
+//   var arrayAdiacenti=[parseInt(x.nextSibling.innerHTML),parseInt(x.previousSibling.innerHTML),parseInt(x.innerHTML)+10,parseInt(x.innerHTML)-10,mine.includes(parseInt(x.innerHTML)+9),parseInt(x.innerHTML)-9,parseInt(x.innerHTML)+11,parseInt(x.innerHTML)-11];}
+// else{
+//   var arrayAdiacenti=[parseInt(x.previousSibling.innerHTML),parseInt(x.innerHTML)+10,parseInt(x.innerHTML)-10,mine.includes(parseInt(x.innerHTML)+9),parseInt(x.innerHTML)-9,parseInt(x.innerHTML)+11,parseInt(x.innerHTML)-11];
+// }
+//
+//   for (var i = 0; i < arrayAdiacenti.length; i++) {
+//     if(mine.includes(arrayAdiacenti[i])){
+//       arr.push(arrayAdiacenti[i]);
+//     }
+// }
+// if (arr.length!==0){
+//   return true;
+// }else{
+//   return false;
+// }
+// }
 function isMinaVicina(x){
-  var arr=[];
-  if(parseInt(x.innerHTML)!==99){
-  var arrayAdiacenti=[parseInt(x.nextSibling.innerHTML),parseInt(x.previousSibling.innerHTML),parseInt(x.innerHTML)+10,parseInt(x.innerHTML)-10,mine.includes(parseInt(x.innerHTML)+9),parseInt(x.innerHTML)-9,parseInt(x.innerHTML)+11,parseInt(x.innerHTML)-11];}
-else{
-  var arrayAdiacenti=[parseInt(x.previousSibling.innerHTML),parseInt(x.innerHTML)+10,parseInt(x.innerHTML)-10,mine.includes(parseInt(x.innerHTML)+9),parseInt(x.innerHTML)-9,parseInt(x.innerHTML)+11,parseInt(x.innerHTML)-11];
-}
-
-  for (var i = 0; i < arrayAdiacenti.length; i++) {
-    if(mine.includes(arrayAdiacenti[i])){
-      arr.push(arrayAdiacenti[i]);
-    }
-}
-if (arr.length!==0){
-  return true;
-}else{
-  return false;
-}
+if((x.nextSibling)!==null && mine.includes(parseInt(x.nextSibling.innerHTML)) || mine.includes(parseInt(x.previousSibling.innerHTML)) ||
+mine.includes(parseInt(x.innerHTML)+10)||
+mine.includes(parseInt(x.innerHTML)-10)||
+mine.includes(parseInt(x.innerHTML)+9)||
+mine.includes(parseInt(x.innerHTML)-9)||
+mine.includes(parseInt(x.innerHTML)+11)||
+mine.includes(parseInt(x.innerHTML)-11)
+)
+{return true;
+}else{return false;}
 }
 
 function PreAdiacenti(x,elementi)
@@ -100,7 +112,7 @@ console.log(mine.sort(function(a, b){return a-b}));
 
 function generaGriglia(max){
 var griglia= document.getElementById('griglia');
-for (var x = 0; x < miomax; x++) {
+for (var x = 0; x < max; x++) {
     if (!mine.includes(x))
    {griglia.innerHTML+='<div class="quadrato buono">'+x+'</div>';
 
@@ -172,7 +184,7 @@ audiofail.play();
 
 
 for (var c = 11;c< quadrati.length-10; c++)
-{if(c % 10 !== 0 && (c+1) % 10 !==0 ){
+{if(c % 10 !== 0 && ((c+1) % 10) !==0 ){
 
 quadrati[c].addEventListener('click',function(){
 
