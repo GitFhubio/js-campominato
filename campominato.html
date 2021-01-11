@@ -3,39 +3,37 @@
 <head>
   <meta charset="utf-8">
   <title>Campo minato</title>
-  <link rel="stylesheet" href="css/campominato.css">
+  <link rel="stylesheet" href="css/minatoalfredoesque.css">
 </head>
-  <div class="wrapper">
-    <header>
-      <h1>Campo Minato</h1>
-    </header>
-    <div class="container flex">
-      <div id="griglia" class="flex">
-      </div>
-      <div class="legenda">
-        <h3>Legenda</h3>
-        <ol>
-          <li>Vinci se riesci a scoprire tutte le caselle senza mine.</li>
-          <li>Il simbolo <strong>&#10004;</strong> indica che hai cliccato sulla casella. </li>
-          <li>Il simbolo <strong>BC!</strong> sta per Be Careful:c'è una mina in almeno una delle otto caselle che circondano quella su cui hai cliccato!</li>
-          <li>Se nei paraggi della casella cliccata non ci sono mine parte un jingle.</li>
-          <li>Fai attenzione,nei paraggi di una casella rivelatasi senza mina ma non cliccata può esserci una mina:cliccaci sopra per aumentare le tue chance di successo.</li>
+<body>
+<header>
+    <h1>Campo Minato</h1>
+</header>
+<div class="container flex">
+  <div id="griglia" class="flex">
+  </div>
+    <div class="legenda">
+      <h3>Legenda</h3>
+   <ol>
+     <li>Vinci se riesci a scoprire tutte le caselle senza mine.</li>
+    <li>Il simbolo '<strong>v</strong>' indica che hai cliccato sulla casella. </li>
+    <li>Il simbolo BC! sta per Be Careful:c'è una mina in almeno una delle otto caselle che circondano quella su cui hai cliccato!</li>
+    <li>Se nei paraggi della casella cliccata non ci sono mine parte un jingle.</li>
+    <li>Fai attenzione,nei paraggi di una casella rivelatasi senza mina ma non cliccata può esserci una mina:cliccaci sopra per aumentare le tue chance di successo.</li>
+  </ol>
+   <div id="suggerimento">
 
-        </ol>
-        <div id="suggerimento">
-
-        </div>
-      </div>
+   </div>
+    </div>
     </div>
     <div class="video flex">
-      <video id="myVideo" controls autoplay width="120" height="100">
+      <video id="myVideo" controls autoplay width="90" height="110">
         <source src="css/lundini.mp4" type="video/mp4">
         </video>
         <span class="festa"></span>
       </div>
 
 
-
-    <script src="js/campominato.js" charset="utf-8"></script>
+    <script src="js/minatoalfredoesque.js" charset="utf-8"></script>
   </body>
   </html>
