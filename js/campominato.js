@@ -2,29 +2,36 @@
 // se i quadrati vicini a quello cliccato sono sicuri si rivelano
 // se nei paraggi c'è una mina esce il segnale bc! (be careful!)
 
+function fabio()
+{
+var scelta=parseInt(document.getElementById('myselect').value);
+return gioco(scelta);
+}
+
+function gioco(max){
 var choice;
 var miomax;
-while (choice!=='easy' && choice!=='medium' && choice!=='hard')
-{choice=prompt('Scegli livello easy,medium o hard');}
+// while (choice!=='easy' && choice!=='medium' && choice!=='hard')
+// {choice=prompt('Scegli livello easy,medium o hard');}
+//
+//
+// function selectlevel(x){
+// switch (x)
+// {case 'hard':
+// return 50;
+// break;
+// case 'medium':
+// return 80;
+// break;
+// case 'easy':
+// return 100;
+// default:
+// return 100;
+// }
+//
+// }
 
-
-function selectlevel(x){
-switch (x)
-{case 'hard':
-return 50;
-break;
-case 'medium':
-return 80;
-break;
-case 'easy':
-return 100;
-default:
-return 100;
-}
-
-}
-
-miomax=selectlevel(choice);
+// miomax=selectlevel(choice);
 
 function isMinaVicina(x){
 if((x.nextSibling)!==null && mine.includes(parseInt(x.nextSibling.innerHTML)) || mine.includes(parseInt(x.previousSibling.innerHTML)) ||
@@ -39,6 +46,42 @@ mine.includes(parseInt(x.innerHTML)-11)
 }else{return false;}
 }
 
+function isMinaVicinaLeft(x){
+if(mine.includes(parseInt(x.nextSibling.innerHTML))||
+mine.includes(parseInt(x.innerHTML)+11)||
+mine.includes(parseInt(x.innerHTML)-9)||
+mine.includes(parseInt(x.innerHTML)+10)||
+mine.includes(parseInt(x.innerHTML)-10)
+)
+{return true;
+}else{return false;}
+}
+
+function isMinaVicinaTop(x){
+  if( mine.includes(parseInt(x.nextSibling.innerHTML)) || mine.includes(parseInt(x.previousSibling.innerHTML)) ||
+  mine.includes(parseInt(x.innerHTML)+10)||
+  mine.includes(parseInt(x.innerHTML)+9)||
+  mine.includes(parseInt(x.innerHTML)+11))
+{return true;
+}else{return false;}
+}
+function isMinaVicinaRight(x){
+  if(mine.includes(parseInt(x.previousSibling.innerHTML)) ||
+  mine.includes(parseInt(x.innerHTML)-11)||
+  mine.includes(parseInt(x.innerHTML)+9)||
+  mine.includes(parseInt(x.innerHTML)+10)||
+  mine.includes(parseInt(x.innerHTML)-10))
+{return true;
+}else{return false;}
+}
+function isMinaVicinaBottom(x){
+  if( mine.includes(parseInt(x.nextSibling.innerHTML)) || mine.includes(parseInt(x.previousSibling.innerHTML)) ||
+  mine.includes(parseInt(x.innerHTML)-10)||
+  mine.includes(parseInt(x.innerHTML)-9)||
+  mine.includes(parseInt(x.innerHTML)-11))
+{return true;
+}else{return false;}
+}
 // ho dovuto mettere la condizione if (x.nextSibling)!==null perché altrimenti la
 // casella 99 mi dava problemi
 
@@ -89,12 +132,15 @@ mine.push(random);
 }
 return mine;
 }
-var mine= mine_generator(16,0,miomax-1);
+
+
+var mine= mine_generator(16,0,max-1);
 
 console.log(mine.sort(function(a, b){return a-b}));
 
 var griglia= document.getElementById('griglia');
-for (var x = 0; x < miomax; x++) {
+griglia.innerHTML="";
+for (var x = 0; x < max; x++) {
     if (!mine.includes(x))
    {griglia.innerHTML+='<div class="quadrato buono">'+x+'</div>';
 
@@ -104,6 +150,7 @@ for (var x = 0; x < miomax; x++) {
    }
 
 }
+
 
 var quadrati= document.getElementsByClassName('quadrato');
 
@@ -130,9 +177,10 @@ if (giocateVinte.length==miomax-16) {
 alert('Ma sei un mostro!Bravissimo,hai vinto');
 }
 // console.log(this.nextSibling.innerHTML);
- if (isMinaVicina(this)){
-  this.append('\nBC!');
-}
+
+//  if (isMinaVicina(this)){
+//   this.append('\nBC!');
+// }
 // else{
 // for (var i = 0; i < PreAdiacenti(this).length; i++) {
 // PreAdiacenti(this)[i].classList.add('verde');
@@ -147,7 +195,7 @@ alert('Ma sei un mostro!Bravissimo,hai vinto');
 this.classList.add('rosso');
 var audiofail = new Audio('css/exp.mp3');
 audiofail.play();
- setTimeout(function(){ window.location.reload(false); }, 3000);
+ setTimeout(function(){ window.location.reload(false); }, 2000);
 }
 
 })
@@ -172,6 +220,9 @@ for (var c = 11;c< quadrati.length; c++)
 quadrati[c].addEventListener('click',function(){
 
 var giocata=this.className;
+if (isMinaVicina(this) && !giocata.includes('malevolo')){
+ this.append('\nBC!');
+}
 if (!isMinaVicina(this) && !giocata.includes('malevolo')){
   var vid = document.getElementById("myVideo");
   vid.play();
@@ -203,6 +254,42 @@ for (var i = 0; i < PostAdiacenti(this).length; i++) {
 PostAdiacenti(this)[i].classList.add('verde');
 }
 }
+});
+}
+}
+
+for (var i = 1; i < 9; i++) {
+quadrati[i].addEventListener('click',function(){
+  var giocata=this.className;
+if(isMinaVicinaTop(this) && !giocata.includes('malevolo'))
+{this.append('\nBC!')};
+});
+}
+
+for (var i = 0; i < miomax-10; i++){
+if(i % 10 == 0) {
+quadrati[i].addEventListener('click',function(){
+  var giocata=this.className;
+if(isMinaVicinaLeft(this) && !giocata.includes('malevolo'))
+{this.append('\nBC!')};
+});
+}
+}
+
+for (var i = 8; i <miomax ; i++){
+if((i+1) % 10 == 0) {
+quadrati[i].addEventListener('click',function(){
+  var giocata=this.className;
+if(isMinaVicinaRight(this) && !giocata.includes('malevolo'))
+{this.append('\nBC!')};
+});
+}
+}
+for (var i = miomax-10; i <(miomax-1) ; i++) {
+quadrati[i].addEventListener('click',function(){
+  var giocata=this.className;
+if(isMinaVicinaBottom(this) && !giocata.includes('malevolo'))
+{this.append('\nBC!')};
 });
 }
 }

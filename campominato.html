@@ -8,6 +8,21 @@
   <div class="wrapper">
     <header>
       <h1>Campo Minato</h1>
+      <h3>Seleziona un livello</h3>
+      <div class="flex bottoni">
+        <div class="custom-select" style="width:200px;">
+          <select id="myselect" onchange="fabio()">
+            <option value=100>Scegli un livello</option>
+            <option value=100>Facile</option>
+            <option value=80>Medio</option>
+            <option value=50>Difficile</option>
+
+          </select>
+        </div>
+      <button type="button" name="button" onclick="gioco(100)">Facile</button>
+      <button type="button" name="button" onclick="gioco(80)">Medio</button>
+      <button type="button" name="button" onclick="gioco(50)">Difficile</button>
+      </div>
     </header>
     <div class="container flex">
       <div id="griglia" class="flex">
