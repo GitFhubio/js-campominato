@@ -10,7 +10,6 @@ return gioco(scelta);
 
 function gioco(max){
 var choice;
-var miomax;
 // while (choice!=='easy' && choice!=='medium' && choice!=='hard')
 // {choice=prompt('Scegli livello easy,medium o hard');}
 //
@@ -212,7 +211,7 @@ audiofail.play();
 // cui devo inserire ulteriore condizione(ricavandomi l'ind)
 
 
-var estremo= miomax-1;
+var estremo= max-1;
 var ind = estremo.toString().charAt(0);
 for (var c = 11;c< quadrati.length; c++)
 {if((c+'').indexOf('0') == -1 && (c+'').indexOf('9') == -1 && (c+'').indexOf(ind) !== 0){
@@ -285,7 +284,7 @@ if(isMinaVicinaRight(this) && !giocata.includes('malevolo'))
 });
 }
 }
-for (var i = miomax-10; i <(max-1) ; i++) {
+for (var i = max-10; i <(max-1) ; i++) {
 quadrati[i].addEventListener('click',function(){
   var giocata=this.className;
 if(isMinaVicinaBottom(this) && !giocata.includes('malevolo'))
